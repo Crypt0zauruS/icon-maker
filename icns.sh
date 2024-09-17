@@ -36,6 +36,7 @@ s=$1
 ICON_NAME_MAC="${s%.*}.icns"
 ICON_NAME_WIN="${s%.*}.ico"
 ICONS_DIR_LINUX="linux_icons"
+ICON_BASE_NAME=$(basename "$s" .png)
 
 # Function to create rounded corner image
 create_rounded_image() {
@@ -107,14 +108,21 @@ fi
 if [[ $linux_choice =~ ^[Yy]$ ]]; then
     echo "Creating Linux icons..."
     mkdir -p $ICONS_DIR_LINUX
-    create_rounded_image "$s" "$ICONS_DIR_LINUX/icon_16x16.png" 16 3
-    create_rounded_image "$s" "$ICONS_DIR_LINUX/icon_32x32.png" 32 6
-    create_rounded_image "$s" "$ICONS_DIR_LINUX/icon_48x48.png" 48 9
-    create_rounded_image "$s" "$ICONS_DIR_LINUX/icon_64x64.png" 64 12
-    create_rounded_image "$s" "$ICONS_DIR_LINUX/icon_128x128.png" 128 25
-    create_rounded_image "$s" "$ICONS_DIR_LINUX/icon_256x256.png" 256 50
+    create_rounded_image "$s" "$ICONS_DIR_LINUX/${ICON_BASE_NAME}_16x16.png" 16 3
+    create_rounded_image "$s" "$ICONS_DIR_LINUX/${ICON_BASE_NAME}_32x32.png" 32 6
+    create_rounded_image "$s" "$ICONS_DIR_LINUX/${ICON_BASE_NAME}_48x48.png" 48 9
+    create_rounded_image "$s" "$ICONS_DIR_LINUX/${ICON_BASE_NAME}_64x64.png" 64 12
+    create_rounded_image "$s" "$ICONS_DIR_LINUX/${ICON_BASE_NAME}_128x128.png" 128 25
+    create_rounded_image "$s" "$ICONS_DIR_LINUX/${ICON_BASE_NAME}_256x256.png" 256 50
     echo "Linux icons saved in $ICONS_DIR_LINUX directory"
 fi
 
-echo "Conversion complete."
+if [[ ! $mac_choice =~ ^[Yy]$ && ! $win_choice =~ ^[Yy]$ && ! $linux_choice =~ ^[Yy]$ ]]; then
+    echo "Wow, tough crowd! No icons for anyone today. 🙈"
+    echo "Don't worry, your PNG is safe and sound, living its best life as a single file."
+    echo "Maybe next time it'll get to be a star on multiple platforms!"
+else
+    echo "Conversion complete."
+fi
+
 read -n 1 -s -r -p "Press any key to exit"
