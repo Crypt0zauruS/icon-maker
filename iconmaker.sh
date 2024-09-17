@@ -1,7 +1,7 @@
 #!/bin/bash
 # Please install imagemagick before running this script
 # brew install imagemagick
-# example usage: ./icns.sh icon.png
+# example usage: ./iconmaker.sh icon.png
 
 # Check if a file is specified
 if [ $# -eq 0 ]; then

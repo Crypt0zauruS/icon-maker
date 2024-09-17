@@ -40,24 +40,27 @@ Before you can use Icon Maker, you need to install ImageMagick. The easiest way 
 
 ## Usage
 
-1. Open Terminal and navigate to the directory containing the `icns.sh` script.
+1. Open Terminal and navigate to the directory containing the `iconmaker.sh` script.
 2. Run the script with your PNG file as an argument:
    ```
-   ./icns.sh path/to/your/icon.png
+   ./iconmaker.sh path/to/your/imgage_file.png
    ```
-3. The script will generate two files in the same directory as your original PNG:
-   - `icon.icns` (macOS icon file)
-   - `icon.ico` (Windows icon file)
+3. The script will ask you to choose your platform(s):
+4. According to your choices, the script will generate the following items in the same directory as your original PNG:
+   - `imgage_file.icns` (macOS icon file)
+   - `imgage_file.ico` (Windows icon file)
+   - a directory `linux_icons`
 
 ## How It Works
 
-The script performs the following steps:
+The script performs the following steps, according to your choices:
 
 1. Creates temporary directories for macOS and Windows icons
 2. Generates rounded corner images for all required sizes
-3. Creates the .icns file for macOS using the `iconutil` command
+3. Creates the .icns file for macOS using ImageMagick the `iconutil` commands
 4. Creates the .ico file for Windows using ImageMagick
-5. Cleans up temporary files
+5. Creates the directory containing the .png files for Linux using ImageMagick
+6. Cleans up temporary files
 
 ## License
 
