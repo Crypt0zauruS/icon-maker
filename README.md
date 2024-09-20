@@ -35,7 +35,7 @@ Before you can use Icon Maker, you need to install ImageMagick. The easiest way 
 1. Clone this repository or download the `icns.sh` script.
 2. Make the script executable:
    ```
-   chmod +x icns.sh
+   chmod +x iconmaker.sh
    ```
 
 ## Usage
